@@ -1,0 +1,188 @@
+<div class="two-sliders-wrapper">
+  <div class="slider-categories">
+    <ul>
+      {% for collection in collections %}
+        <li>
+          <a href="{{ collection.url }}">{{ collection.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="slider1" class="slider slider--left">
+    <div class="slider-track">
+      {% if section.settings.slider1_image_1 %}
+        {% if section.settings.slider1_link_1 != blank %}
+          <a href="{{ section.settings.slider1_link_1 }}" class="slider-link">
+            <img src="{{ section.settings.slider1_image_1 | image_url: width: 1500 }}" alt="">
+          </a>
+        {% else %}
+          <img src="{{ section.settings.slider1_image_1 | image_url: width: 1500 }}" alt="">
+        {% endif %}
+      {% endif %}
+
+      {% if section.settings.slider1_image_2 %}
+        {% if section.settings.slider1_link_2 != blank %}
+          <a href="{{ section.settings.slider1_link_2 }}" class="slider-link">
+            <img src="{{ section.settings.slider1_image_2 | image_url: width: 1500 }}" alt="">
+          </a>
+        {% else %}
+          <img src="{{ section.settings.slider1_image_2 | image_url: width: 1500 }}" alt="">
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div id="slider2" class="slider slider--right">
+    <div class="slider-track">
+      {% if section.settings.slider2_image_1 %}
+        {% if section.settings.slider2_link_1 != blank %}
+          <a href="{{ section.settings.slider2_link_1 }}" class="slider-link">
+            <img src="{{ section.settings.slider2_image_1 | image_url: width: 1000 }}" alt="">
+          </a>
+        {% else %}
+          <img src="{{ section.settings.slider2_image_1 | image_url: width: 1000 }}" alt="">
+        {% endif %}
+      {% endif %}
+
+      {% if section.settings.slider2_image_2 %}
+        {% if section.settings.slider2_link_2 != blank %}
+          <a href="{{ section.settings.slider2_link_2 }}" class="slider-link">
+            <img src="{{ section.settings.slider2_image_2 | image_url: width: 1000 }}" alt="">
+          </a>
+        {% else %}
+          <img src="{{ section.settings.slider2_image_2 | image_url: width: 1000 }}" alt="">
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+    .two-sliders-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 40px 0;
+      gap: 20px;
+          justify-content: center;
+    }
+    .slider-categories {
+    flex: 0 0 20%;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    height: 600px;
+    overflow-y: auto;
+  }
+
+  .slider-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .slider-categories li {
+    margin-bottom: 12px;
+  }
+
+  .slider-categories a {
+    text-decoration: none;
+    color: #272727;
+    font-weight: 700;
+    font-size:16px;
+        text-transform: uppercase;
+  }
+
+  .slider-categories a:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+    .slider {
+      overflow: hidden;
+      position: relative;
+      border-radius: 10px;
+      height:600px;
+    }
+    .slider--left {
+      flex: 0 0 45%;
+    }
+    .slider--right {
+      flex: 0 0 30%;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.6s ease;
+      width: 100%;
+      height:100%;
+    }
+    .slider img {
+      width: 100%;
+      flex: 0 0 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+    @media (max-width: 768px) {
+      .two-sliders-wrapper {
+        flex-direction: column;
+      }
+      .slider-categories,
+      .slider--left,
+      .slider--right {
+        flex: 0 0 100%;
+      }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Dos sliders 70/30",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "slider1_image_1",
+      "label": "Slider 1 - Imagen 1"
+    },
+    {
+      "type": "url",
+      "id": "slider1_link_1",
+      "label": "Enlace Slider 1 - Imagen 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "slider1_image_2",
+      "label": "Slider 1 - Imagen 2"
+    },
+    {
+      "type": "url",
+      "id": "slider1_link_2",
+      "label": "Enlace Slider 1 - Imagen 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "slider2_image_1",
+      "label": "Slider 2 - Imagen 1"
+    },
+    {
+      "type": "url",
+      "id": "slider2_link_1",
+      "label": "Enlace Slider 2 - Imagen 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "slider2_image_2",
+      "label": "Slider 2 - Imagen 2"
+    },
+    {
+      "type": "url",
+      "id": "slider2_link_2",
+      "label": "Enlace Slider 2 - Imagen 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dos sliders tipo Avinichi",
+      "category": "Secciones personalizadas"
+    }
+  ]
+}
+{% endschema %}
